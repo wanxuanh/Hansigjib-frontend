@@ -14,6 +14,14 @@ export default function AccountPage() {
     //     }).catch((error) => console.log(error))
     // })
 
+    // useEffect(() => {
+    //     axios.get(BACKEND, '/user/login')
+    //     .then((res) => {
+    //         console.log(res.data)
+    //         setApproved(res.user)
+    //     }).catch((error) => console.log(error))
+    // })
+// console.log("AuthContext", dataContext)
     return (
         <>
         <h2>Account</h2>
