@@ -15,6 +15,7 @@ export default function OrderConfirmation() {
 
     const [transaction, setTransaction] = useState([])
     const [transactionSum, setTransactionSum] = useState('')
+    const [date, setDate] = useState('')
 
     useEffect(() => {
         console.log(id)
@@ -23,6 +24,7 @@ export default function OrderConfirmation() {
                 console.log(res)
                 setTransaction(res.data.transactions)
                 setTransactionSum(res.data.transactions.reduce((sum, {itemTotal}) => sum + itemTotal, 0))
+                setDate(res.data.createdAt.slice(0, 10))
             }).catch((error) => console.log(error))
     }, [])
 
@@ -33,9 +35,9 @@ export default function OrderConfirmation() {
                 <div className='col-12'>
                     <table className='table table-light table-hover m-0'>
                         <tbody>
-                            {transaction.map((item) => {
+                            {transaction.map((item, id) => {
                                 return (
-                                    <tr key='test'>
+                                    <tr key={id}>
                             
                                         <td>{item.name}</td>
                                         <td>S${item.price}</td>
@@ -45,6 +47,9 @@ export default function OrderConfirmation() {
                             })}
                         </tbody>
                     </table>
+                </div>
+                <div className='col-auto ms-auto'>
+                    <h2>{date}</h2>
                 </div>
                 <div className='col-auto ms-auto'>
                     <h2>Total Price: S${transactionSum}</h2>

@@ -39,7 +39,6 @@ export default function CartItems() {
             .then((res) => {
 
                 if (res.status === 200) {
-                    console.log(res.data.transaction_id)
                     routeChange(res.data.transaction_id)
                     emptyCart()
                 }
